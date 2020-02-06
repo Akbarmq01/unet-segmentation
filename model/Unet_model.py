@@ -42,8 +42,8 @@ class UNET(nn.Module):
 # print(output.shape)
 
 
-input_image = torch.ones(1,3,500,600)
-net = UNET(3, 4)
-output = net(input_image)
-print(output.shape)
+# input_image = torch.ones(1,3,500,600)
+# net = UNET(3, 4)
+# output = net(input_image)
+# print(output.shape)
 

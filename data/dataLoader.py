@@ -13,7 +13,7 @@ class DataFolder(Dataset):
         self.transform = transform
         self.data_path = os.path.join(self.rootdir, 'data')
         self.label_path = os.path.join(self.rootdir, 'labels')
-        self.listdir = os.listdir(self.data_root)
+        self.listdir = os.listdir(self.rootdir)
         if phase == 'train':
             self.listdir = self.listdir[:int(len(self.listdir)*opt.split)]
         elif phase == 'val':
