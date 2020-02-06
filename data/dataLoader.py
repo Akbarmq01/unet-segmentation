@@ -16,7 +16,7 @@ class DataFolder(Dataset):
         self.listdir = os.listdir(self.data_root)
         if phase == 'train':
             self.listdir = self.listdir[:int(len(self.listdir)*opt.split)]
-        elif:
+        elif phase == 'val':
             self.listdir = self.listdir[int(len(self.listdir)*opt.split):]
 
         opt.dataset_size[phase] = len(self.listdir)
