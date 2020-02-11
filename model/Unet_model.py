@@ -1,5 +1,6 @@
-from model_blocks import *
-import torch.nn.functional as F 
+from model.model_blocks import *
+import torch.nn.functional as F
+import torch 
 
 class UNET(nn.Module):
 	def __init__(self,input_channels,num_classes):
@@ -17,6 +18,7 @@ class UNET(nn.Module):
 		self.up3 = Upsample(256,128)
 		self.up4 = Upsample(128,64) 
 		self.out_conv = OutConv(64, num_classes)
+		self.sigmoid = torch.nn.Sigmoid()
 
 	def forward(self, x):
 		c1 = self.double_conv1(x)
@@ -30,6 +32,7 @@ class UNET(nn.Module):
 		x  = self.up2(x,c3)
 		x =  self.up3(x, c2)
 		x  = self.up4(x, c1)
+		x = self.sigmoid(x)
 		return self.out_conv(x)
 
 
